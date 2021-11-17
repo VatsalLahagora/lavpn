@@ -1,0 +1,51 @@
+group 'com.vatsal.lavpn.lavpn'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.4'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    dependencies {
+
+//        implementation project(':vpnLib')
+//        implementation project(path: ':vpnLib')
+//        implementation 'com.github.Topfreelancerdeveloperr:flutter_openvpn_library_updated:3361996fa1'
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+        testImplementation 'junit:junit:4.13'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+    }
+}
